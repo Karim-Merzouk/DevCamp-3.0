@@ -61,30 +61,24 @@ def encode_features(train_df, new_df, target_column):
             new_df = pd.concat([new_df, new_dummies], axis=1)
 
     return train_df, new_df
-
-# --- Now continue with your regular imports ---
 app = FastAPI()
 
-# --- CORS Configuration --- <--- MAKE SURE THIS IS PRESENT
-# main.py
-# ...
+# Allow requests from these origins
 origins = [
-    "http://localhost:5173", # Keep for local dev
-    "http://127.0.0.1:5173", # Keep for local dev
-    # Add your deployed frontend URL here when you know it
-    # e.g., "https://your-frontend-app.onrender.com",
-    # Add your Render backend URL here after deployment (optional but good practice)
-    # e.g., "https://your-backend-api.onrender.com"
+    "http://localhost:3000",   # React dev server
+    "http://localhost:5173",   # Vite dev server
+    "http://127.0.0.1:5500",   # Live Server
+    "https://your-frontend-domain.com",  # Production frontend
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins, # Update this list as needed
+    allow_origins=origins,              # List of allowed origins
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],                # Allow all HTTP methods: POST, GET, etc.
+    allow_headers=["*"],                # Allow all headers
 )
-# ...
+
 
 # --- Database Initialization ---
 # Create database tables if they don't exist
