@@ -67,7 +67,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",   # React dev server
     "http://localhost:5173",   # Vite dev server
-    "http://127.0.0.1:5500",   # Live Server
+    "http://127.0.0.1:5173",   # Live Server
     "https://your-frontend-domain.com",  # Production frontend
 ]
 
