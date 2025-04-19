@@ -61,7 +61,11 @@ def encode_features(train_df, new_df, target_column):
             new_df = pd.concat([new_df, new_dummies], axis=1)
 
     return train_df, new_df
-app = FastAPI()
+app = FastAPI(
+    title="My Backend Project API",
+    description="API for user registration and authentication.",
+    version="0.1.0",
+)
 
 # Allow requests from these origins
 origins = [
@@ -91,12 +95,8 @@ except Exception as e:
     print(f"Error creating database tables: {e}")
 
 
-# --- FastAPI App Instance ---
-app = FastAPI(
-    title="My Backend Project API",
-    description="API for user registration and authentication.",
-    version="0.1.0",
-)
+
+
 
 print("FastAPI app instance created.")
 
